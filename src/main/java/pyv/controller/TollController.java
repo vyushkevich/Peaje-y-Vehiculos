@@ -9,30 +9,30 @@ public class TollController {
     private Scanner scanner;
 
     public TollController() {
-        this.tollStation = new TollStation("Estación Central", "Ciudad Central");
+        this.tollStation = new TollStation("Central Station", "Central City");
         this.scanner = new Scanner(System.in);
     }
 
     public void start() {
-        System.out.println("Bienvenido al sistema de peaje");
+        System.out.println("Welcome to the toll system");
         int option;
 
         do {
             printMenu();
             option = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
+            scanner.nextLine(); // Consume the newline character
             handleOption(option);
         } while (option != 4);
 
-        System.out.println("¡Gracias por usar el sistema de peaje!");
+        System.out.println("Thank you for using the toll system!");
     }
 
     private void printMenu() {
-        System.out.println("\nSeleccione una opción:");
-        System.out.println("1. Registrar coche");
-        System.out.println("2. Registrar moto");
-        System.out.println("3. Registrar camión");
-        System.out.println("4. Mostrar resultados y salir");
+        System.out.println("\nSelect an option:");
+        System.out.println("1. Register car");
+        System.out.println("2. Register motorcycle");
+        System.out.println("3. Register truck");
+        System.out.println("4. Show results and exit");
     }
 
     private void handleOption(int option) {
@@ -50,42 +50,42 @@ public class TollController {
                 showResults();
                 break;
             default:
-                System.out.println("Opción inválida. Intente de nuevo.");
+                System.out.println("Invalid option. Please try again.");
         }
     }
 
     private void registerCar() {
-        System.out.println("Ingrese la placa del coche:");
+        System.out.println("Enter the car's license plate:");
         String licensePlate = scanner.nextLine();
         Vehicle car = new Car(licensePlate);
         tollStation.registerVehicle(car);
-        System.out.println("Coche registrado con éxito.");
+        System.out.println("Car successfully registered.");
     }
 
     private void registerMotorcycle() {
-        System.out.println("Ingrese la placa de la moto:");
+        System.out.println("Enter the motorcycle's license plate:");
         String licensePlate = scanner.nextLine();
         Vehicle motorcycle = new Motorcycle(licensePlate);
         tollStation.registerVehicle(motorcycle);
-        System.out.println("Moto registrada con éxito.");
+        System.out.println("Motorcycle successfully registered.");
     }
 
     private void registerTruck() {
-        System.out.println("Ingrese la placa del camión:");
+        System.out.println("Enter the truck's license plate:");
         String licensePlate = scanner.nextLine();
-        System.out.println("Ingrese el número de ejes:");
+        System.out.println("Enter the number of axles:");
         int numberOfAxles = scanner.nextInt();
-        scanner.nextLine(); // Consumir el salto de línea
+        scanner.nextLine(); // Consume the newline character
         Vehicle truck = new Truck(licensePlate, numberOfAxles);
         tollStation.registerVehicle(truck);
-        System.out.println("Camión registrado con éxito.");
+        System.out.println("Truck successfully registered.");
     }
 
     private void showResults() {
-        System.out.println("\nVehículos registrados:");
+        System.out.println("\nRegistered vehicles:");
         for (Vehicle vehicle : tollStation.getVehicles()) {
-            System.out.println("- " + vehicle.getClass().getSimpleName() + " con placa: " + vehicle.getLicensePlate());
+            System.out.println("- " + vehicle.getClass().getSimpleName() + " with license plate: " + vehicle.getLicensePlate());
         }
-        System.out.println("Total recaudado: $" + tollStation.getTotalToll());
+        System.out.println("Total toll collected: $" + tollStation.getTotalToll());
     }
 }
