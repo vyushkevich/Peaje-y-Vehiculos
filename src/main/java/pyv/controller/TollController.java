@@ -37,11 +37,20 @@ public class TollController {
 
     private void handleOption(int option) {
         switch (option) {
-            case 1 -> registerCar();
-            case 2 -> registerMotorcycle();
-            case 3 -> registerTruck();
-            case 4 -> showResults();
-            default -> System.out.println("Opción inválida. Intente de nuevo.");
+            case 1:
+                registerCar();
+                break;
+            case 2:
+                registerMotorcycle();
+                break;
+            case 3:
+                registerTruck();
+                break;
+            case 4:
+                showResults();
+                break;
+            default:
+                System.out.println("Opción inválida. Intente de nuevo.");
         }
     }
 
