@@ -1,0 +1,38 @@
+@startuml Diagram
+
+class TollStation {
+  - name: String
+  - city: String
+  - totalCollected: double
+  + TollStation(name: String, city: String)
+  + calculateToll(vehicle: Vehicle): double
+  + registerVehicle(vehicle: Vehicle)
+  + getTotalCollected(): double
+}
+
+class Vehicle {
+  - plate: String
+  + Vehicle(plate: String)
+  + getPlate(): String
+}
+
+class Car {
+  + calculateToll(): double
+}
+
+class Motorcycle {
+  + calculateToll(): double
+}
+
+class Truck {
+  - numberOfAxles: int
+  + Truck(plate: String, numberOfAxles: int)
+  + calculateToll(): double
+}
+
+TollStation "1" -- "*" Vehicle : registers >
+Vehicle <|-- Car
+Vehicle <|-- Motorcycle
+Vehicle <|-- Truck
+
+@enduml
