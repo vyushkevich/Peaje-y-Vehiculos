@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TollStation {
+    @SuppressWarnings("unused")
     private String name;
+    @SuppressWarnings("unused")
     private String city;
+    
     private int totalToll;
     private List<Vehicle> vehicles;
 

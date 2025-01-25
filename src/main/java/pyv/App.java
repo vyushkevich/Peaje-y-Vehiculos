@@ -1,6 +1,5 @@
 package pyv;
 
-import pyv.model.*;
 import pyv.controller.TollController;
 
 public class App {
